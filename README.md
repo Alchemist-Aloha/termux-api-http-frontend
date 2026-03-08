@@ -34,7 +34,7 @@ This frontend requires the **[termux-api-http](https://github.com/Alchemist-Aloh
    ```
 2. Create a `.env` file based on `.env.example`:
    ```env
-   VITE_API_URL=http://YOUR_DEVICE_IP:43333/api
+   VITE_API_URL=http://YOUR_DEVICE_IP:3000/api
    VITE_API_KEY=your_optional_key
    ```
 3. Start the development server:
