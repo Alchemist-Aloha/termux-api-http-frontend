@@ -9,5 +9,5 @@ services:
         VITE_API_URL: ${VITE_API_URL:-http://192.168.88.230:43333/api}
         VITE_API_KEY: ${VITE_API_KEY:-kent1023}
     ports:
-      - "8080:80"
+      - "33334:80"
     restart: always

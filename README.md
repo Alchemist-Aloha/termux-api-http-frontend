@@ -24,7 +24,7 @@ This frontend requires the **[termux-api-http](https://github.com/Alchemist-Aloh
    ```bash
    docker-compose up -d
    ```
-4. Access the dashboard at `http://localhost:8080`.
+4. Access the dashboard at `http://localhost:33334`.
 
 ### Local Development
 
