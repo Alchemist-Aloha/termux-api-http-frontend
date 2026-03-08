@@ -63,5 +63,3 @@ The application is configured via environment variables:
 
 `Web Dashboard (React) <---> HTTP API (Node.js/Termux) <---> Termux API <---> Android System`
 
----
-Built with ❤️ for the Termux community.
