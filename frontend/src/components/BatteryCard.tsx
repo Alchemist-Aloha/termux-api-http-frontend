@@ -49,7 +49,7 @@ const BatteryCard = () => {
       </div>
       <div className="stat-item">
         <span className="stat-label">Temperature</span>
-        <span className="stat-value">{(data.temperature / 10).toFixed(1)}°C</span>
+        <span className="stat-value">{(data.temperature).toFixed(1)}°C</span>
       </div>
       <button onClick={fetchData} className="secondary" style={{ width: '100%', marginTop: '10px' }}>Refresh</button>
     </div>
