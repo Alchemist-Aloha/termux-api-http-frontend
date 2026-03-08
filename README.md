@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# Termux Remote Dashboard (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React-based dashboard for remote Android device management. This interface allows you to monitor status and control hardware features of your Android device from any web browser.
 
-Currently, two official plugins are available:
+## 🔗 Required Backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This frontend requires the **[termux-api-http](https://github.com/Alchemist-Aloha/termux-api-http)** backend to be running on your Android device within Termux.
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **System Monitoring:** Real-time battery status, network info, device details, and GPS location.
+- **Hardware Control:** Remotely toggle the torch, adjust screen brightness, trigger vibration, and manage volume streams.
+- **Communications:** Read/send SMS messages, view call logs, and access contacts.
+- **UI Interaction:** Send toast notifications, use Text-to-Speech (TTS), and manage the system clipboard.
+- **Notification Management:** View active notifications and send new ones to the device.
 
-## Expanding the ESLint configuration
+## 🚀 Quick Start
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Using Docker (Recommended)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone this repository.
+2. Edit `docker-compose.yml` or set environment variables to point to your device's IP.
+3. Start the container:
+   ```bash
+   docker-compose up -d
+   ```
+4. Access the dashboard at `http://localhost:8080`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Local Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Create a `.env` file based on `.env.example`:
+   ```env
+   VITE_API_URL=http://YOUR_DEVICE_IP:43333/api
+   VITE_API_KEY=your_optional_key
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Configuration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The application is configured via environment variables:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `VITE_API_URL` | The base URL of your `termux-api-http` server. | `http://localhost:43333/api` |
+| `VITE_API_KEY` | The API key configured on your server (if any). | (empty) |
+
+## 🛠️ Tech Stack
+
+- **Framework:** React 19
+- **Build Tool:** Vite
+- **Icons:** Lucide React
+- **HTTP Client:** Axios
+- **Deployment:** Docker (Nginx)
+
+## 🏗️ Architecture
+
+`Web Dashboard (React) <---> HTTP API (Node.js/Termux) <---> Termux API <---> Android System`
+
+---
+Built with ❤️ for the Termux community.
